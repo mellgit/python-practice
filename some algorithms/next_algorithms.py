@@ -5,6 +5,7 @@ def main():
     print(
         " 1 - palindrome\n",
         "2 - binary search\n",
+        "3 - selection sort\n",
         "0 - exit\n",
     )
     while True:
@@ -17,6 +18,10 @@ def main():
                 random_set = set([randint(1, 100) for i in range(1,11)])
                 sort_list = list(sorted(random_set))
                 print(binary_search(sort_list))
+            elif answer == 3:
+                random_set = set([randint(1, 100) for i in range(1,11)])
+                random_list_of_nums = list(random_set)               
+                print(selection_sort(random_list_of_nums)) 
             elif answer == 0:
                 break
         except Exception as ex:
@@ -34,15 +39,6 @@ def binary_search(sort_list):
     low = 0 # начало списка
     high = len(sort_list) - 1 # конец списка
 
-    """
-    список будет делиться на половину и число, 
-    которое оказалось посередине сравнивается с искомым, 
-    если число больше, то переходим в правую часть списка,
-    иначе в левую 
-    и делаем тоже самое в середине половинного списка,
-    и так пока не надем нужное нам число
-    """
-
     while sort_list[mid] != serch_value and low <= high:
         if serch_value > sort_list[mid]:
             low = mid + 1
@@ -51,6 +47,20 @@ def binary_search(sort_list):
         mid = (low + high) // 2
     
     return f"No value" if low > high else f"ID = {mid}"
+
+def selection_sort(nums):  
+    # Значение i соответствует кол-ву отсортированных значений
+    print(nums)
+    for i in range(len(nums)):
+        # Исходно считаем наименьшим первый элемент
+        lowest_value_index = i
+        # Этот цикл перебирает несортированные элементы
+        for j in range(i + 1, len(nums)):
+            if nums[j] < nums[lowest_value_index]:
+                lowest_value_index = j
+        # Самый маленький элемент меняем с первым в списке
+        nums[i], nums[lowest_value_index] = nums[lowest_value_index], nums[i]
+    return nums
 
 
 

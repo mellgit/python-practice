@@ -14,21 +14,22 @@ def main():
             if answer == 1:
                 nums = [1, 4, 3, 7, 10, 2]
                 val_bubble = bubble_sort(nums)
-                print(f"bubble sort {val_bubble}")
+                print(val_bubble)
             elif answer == 2:
                 value = 5
                 val_factorial = factorial(value)
-                print(f"factorial {value} = {val_factorial}")
+                print(f"{value}! = {val_factorial}")
             elif answer == 3:
                 value = 5
-                print(f"\nspecific row - {fibonacci_numbers(value)}")
+                print(f"\nend - {fibonacci_numbers(value)}")
             elif answer == 4:
                 dic_lev1 = "hello"
                 dic_lev2 = "hello"
                 print(f"number of fixes - {levenshtein_distance(dic_lev1, dic_lev2)}")
             elif answer == 5:
                 inv_list = [1, 2, 3]
-                inverted_list(inv_list)
+                inverted_list = lambda inv_list : f"{inv_list}\n{inv_list[::-1]}"
+                print(inverted_list(inv_list))
             elif answer == 0:
                 break
         except Exception as ex:
@@ -48,8 +49,7 @@ def bubble_sort(nums):
 def factorial(value):
     if value == 0:
         return 1
-    fac = 1
-    i = 1
+    fac = i = 1
     while i < value:
         i += 1
         fac *= i
@@ -87,10 +87,6 @@ def levenshtein_distance(a, b):
             )
     return rec(len(a), len(b))
 
-
-def inverted_list(inv_list):
-    print(inv_list)
-    print(inv_list[::-1])
 
 
 if __name__ == "__main__":
