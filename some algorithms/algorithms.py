@@ -93,11 +93,5 @@ def inverted_list(inv_list):
     print(inv_list[::-1])
 
 
-def linked_list():
-    # linked_list()
-    # чаще всего просят развернуть этот список
-    pass
-
-
 if __name__ == "__main__":
     main()
