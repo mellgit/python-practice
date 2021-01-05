@@ -1,14 +1,13 @@
-from opcua import Client  # модуль для работы с клиентом
+from opcua import Client  # module for working with a client
 import time
 import os
 
-# url = "opc.tcp://ip:port
-url = input("enter ip: ")
-if len(url) != 0:
+ip_port = input('enter "ip:port">')
+try:
+    protocol = "opc.tcp://"
+    url = str(protocol+ip_port) # server address
 
-    
-
-    client = Client(url)  # создание клиента
+    client = Client(url)  # customer creation
     client.connect_socket()
     client.send_hello()
     client.open_secure_channel()
@@ -22,7 +21,7 @@ if len(url) != 0:
         client.get_endpoints()[0].Server.GatewayServerUri,
         client.get_endpoints()[0].Server.DiscoveryProfileUri,
         client.get_endpoints()[0].Server.DiscoveryUrls
-    ]
+        ]
 
     keys = [
         "ProductUri",
@@ -32,7 +31,7 @@ if len(url) != 0:
         "GatewayServerUri",
         "DiscoveryProfileUri",
         "DiscoveryUrls",
-    ]
+        ]
 
     for i in range(len(parameters)):
         print(f"{keys[i]}: \t{parameters[i]}")
@@ -41,5 +40,5 @@ if len(url) != 0:
     client.disconnect_socket()
 
     os._exit(1)
-else:
-    print("empty address")
+except Exception as exp:
+    print(exp)
