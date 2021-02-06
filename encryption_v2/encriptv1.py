@@ -1,21 +1,8 @@
-# import rsa
-#
-# (pubkey, privkey) = rsa.newkeys(512)
-#
-# message = b'Hello Friend'  # b - значит байт
-#
-# # шифруем
-# crypto = rsa.encrypt(message, pubkey)
-# print(crypto)
-# # расшифровываем
-# message = rsa.decrypt(crypto, privkey)
-# print(message)
-
-
 import math
-
+import rsa
 
 def main():
+    
     n = 0
     d = 1
     # список для записи значения f, тк в дальнейшем его необходимо изменять
@@ -35,12 +22,38 @@ def main():
     list_of_decrypted_numbers = []  # расшифрованный список чисел
     decrypted_message_list = []  # список для перевода из чисел в буквы русского алфавита
 
-    simple_key_generation(list_of_primes, list_of_e, n, list_of_e_and_n, euler_function)  # генерация открытого ключа
-    private_key_generation(list_of_e_and_n, list_of_d_and_n, euler_function, d)  # генерация закрытого ключа
-    encryption_function(russian_alphabet, list_of_e_and_n, list_of_numbers_alphabet,
-                        list_of_encrypted_numbers)  # шифрование сообщения
-    decryption_function(russian_alphabet, list_of_encrypted_numbers, list_of_d_and_n, list_of_decrypted_numbers,
-                        decrypted_message_list)  # расшифрование сообщения
+    while True:
+        try:
+            choice = int(input("выбери один из двух способов шифрования(input 1(bit) or 2(private key)):>"))
+            if choice == 1:
+                bitwise_encryption()
+            elif choice == 2:
+                simple_key_generation(list_of_primes, list_of_e, n, list_of_e_and_n, euler_function)  # генерация открытого ключа
+                private_key_generation(list_of_e_and_n, list_of_d_and_n, euler_function, d)  # генерация закрытого ключа
+                encryption_function(russian_alphabet, list_of_e_and_n, list_of_numbers_alphabet,
+                list_of_encrypted_numbers)  # шифрование сообщения
+                decryption_function(russian_alphabet, list_of_encrypted_numbers, list_of_d_and_n, list_of_decrypted_numbers,
+                decrypted_message_list)  # расшифрование сообщения
+            else:
+                continue
+        except Exception as e3:
+            print(f'неверный фромат числа - {e3}')
+        break
+
+
+def bitwise_encryption():
+    
+    (pubkey, privkey) = rsa.newkeys(512)
+
+    message = input("enter message in english>").encode() # ввод только на английском
+
+    # шифруем
+    crypto = rsa.encrypt(bytes(message), pubkey)
+    print(crypto)
+
+    # расшифровываем
+    message = rsa.decrypt(crypto, privkey)
+    print(message)
 
 
 def simple_key_generation(list_of_primes, list_of_e, n, list_of_e_and_n, euler_function):  # создание открытого ключа
@@ -86,10 +99,10 @@ def simple_key_generation(list_of_primes, list_of_e, n, list_of_e_and_n, euler_f
                             print('{e,n} = ', *list_of_e_and_n)
                             break
                     except Exception as e2:
-                        print('неверный фромат числа')
+                        print(f'неверный фромат числа - {e2}')
                 break
         except Exception as e:
-            print('неверный фромат числа')
+            print(f'неверный фромат числа - {e}')
 
 
 # создание закрытого ключа
@@ -143,19 +156,3 @@ def decryption_function(russian_alphabet, list_of_encrypted_numbers, list_of_d_a
 
 main()
 
-
-def exp():
-    # проверка на шифрование
-    import math
-    print('шифр')
-    print(pow(5, 5) % 21)
-    print(pow(1, 5) % 21)
-    print(pow(15, 5) % 21)
-    print(pow(33, 5) % 21)
-    print('расшифр')
-    print(pow(17, 17) % 21)
-    print(pow(1, 17) % 21)
-    print(pow(15, 17) % 21)
-    print(pow(3, 17) % 21)
-
-# exp()
