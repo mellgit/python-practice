@@ -18,39 +18,19 @@ def main():
 # work with csv file
 def task_11():
 
-    # with open("ice_cream.csv", newline='', encoding='utf-8') as csv_file:
-    #     reader = csv.DictReader(csv_file, delimiter=';')
-        
 
-    with open("ice_cream.csv", encoding='utf-8') as csvfile:
-        csvreader = csv.reader(csvfile, delimiter=';')
+    with open('ice_cream.csv', encoding="utf8") as csvfile:
+        reader = csv.reader(csvfile, delimiter=';', quotechar='"')
+        # убрать первую строку, потому что там названия столбцов
+        reader = [item for line in list(reader)[1:] for item in line if item]
+        tastes = {}
+        for taste in reader:
+            # если нет такого вкуса в словаре - вернуть 0
+            count = tastes.get(taste, 0)
+            tastes[taste] = count + 1
+        # отсортировать по значению (поэтому сначала value, потом key) и потом вывести ключ (поэтому индекс 1)
+        print(max((value, key) for key, value in tastes.items())[1])
 
-        counter = c.Counter()
-        for row in csvreader:
-            if row[2]:  # skip empty
-                counter[row[2]] += 1
-                
-
-    print(counter.most_common(1))
-    
-
-
-    # strawberry_count = 0
-    # mango_count = 0
-    # apple_count = 0
-
-
-
-    # with open("ice_cream.csv", newline='', encoding='utf-8') as csv_file:
-    #     reader = csv.DictReader(csv_file, delimiter=';')
-        
-    #     for row in reader:
-    #         print(row['ice_1'], row['ice_2'], row['ice_3'])
-
-
-        #     if "клубника" in row['ice_1'] or row['ice_2'] or row['ice_3']:
-        #         strawberry_count += 1
-        # print(strawberry_count)
 
     # read file
     # with open("ice_cream.csv", newline='', encoding='utf-8') as csv_file:
