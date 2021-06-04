@@ -6,13 +6,7 @@ def count_bits(n):
     s = n[2:]
     count = 0
     ln = [count + 1 for i in range(len(s)) if s[i] =='1']
-    # for i in range(len(s)):
-    #     if s[i] == '1':
-    #         count+=1
     return len(ln)
 
 
 main()
-
-# n = 10011010010
-# print(n.bit_length())
