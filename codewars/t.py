@@ -1,7 +1,16 @@
+def solution(value):
+    # value_str = str(value)
+    # val_str = len(value_str)
+    # ln = 5 - val_str
+    # out_str = ''
+    # for i in range(ln):
+    #     out_str+="0"
+    # return out_str+value_str
 
+    
+    out_str = ''
+    for i in range(5 - len(str(value))):
+        out_str+="0"
+    return f"Value is {out_str+str(value)}"
 
-def t():
-    a = 123.toString()
-    print(a)
-
-print(t())
+print(solution(000))
