@@ -7,7 +7,8 @@ from typing import SupportsAbs
 
 
 def main():
-    print(get_middle("A"))
+    print(get_middle("testing"))
+    print(get_middle("test"))
 
 
 def get_middle(s):
