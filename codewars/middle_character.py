@@ -16,11 +16,6 @@ def get_middle(s):
     else:
         return f"{s[int((len(s)/2)-1)]}{s[int((len(s)/2)-1)+1]}"
 
-    # print(s[5])
-    # print(len(s))
-    # print(len(s)%2)
-
-    # return s[int(((len(s)+1)/2)-1)] else 
 
 if __name__ == "__main__":
     main()
