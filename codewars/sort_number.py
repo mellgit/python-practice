@@ -27,19 +27,13 @@ sortSequence([3,2,1,0,5,6,4,0,1,5,3,0,2,2,2,0]) should return
 sortSequence([2,2,2,0,5,6,4,0,1,5,3,0,3,2,1,0]) should return
 [2,2,2,0,1,2,3,0,1,3,5,0,4,5,6,0]
 """
-# сортировка словаря по ключам
-# d = {'a': 10, 'c': 15, 'b': 4}
-# list_keys = list(d.keys())
-# list_keys.sort()
-# for i in list_keys:
-#     print(i, ':', d[i])
 
 
 def main():
-    print(sort_sequence([3,2,1,0,5,6,4,0,1,5,3,0,4,2,8,0]))
+    print(sort_sequence_v1([3,2,1,0,5,6,4,0,1,5,3,0,4,2,8,0]))
 
 #решение, если сумма подсписков не повторяется
-def sort_sequence(sequence):
+def sort_sequence_v1(sequence):
     #формирование подсписков
     ln = [[],[],[],[]]
     j = 0
