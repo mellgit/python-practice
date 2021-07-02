@@ -22,13 +22,8 @@ def main():
 
 def last_digit(n):
     lb = str(math.factorial(n))[::-1]
-    # for i in range(len(lb)):
-    #     if lb[i] != '0':
-    #         return int(lb[i])
     return [int(lb[i]) for i in range(len(lb)) if lb[i] != '0'][0]
     
-        # if lb[i] != 0:
-        #     return lb[i]
 
     
 
