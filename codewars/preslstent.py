@@ -20,20 +20,82 @@ import numpy as np
 def main():
     print(persistence(999))
 
+
+
 def persistence(n):
-    #v5
-    num = str(n)
+    #v7
+    snum = str(n)
+    if len(snum) == 1:
+        return 0
+    list_num = [int(elem) for elem in snum]
+    ln = np.prod(list_num)
+    counter = 1
+    while ln >= 10:
+        list_num = [int(elem) for elem in list(str(ln))]
+        ln = int(np.prod(list_num))
+        counter+=1
+    return counter
     
-    if len(num) == 1:
-        if len(num) == 1 and num.isdigit() and num > '0':
-            return 0
-        else:
-            return int(num)
-    else:
-        ln = []
-        for i in range(len(num)):
-            ln.append(int(num[i]))
-        return persistence(int(np.prod(ln)))
+    
+    #v6
+    # num = str(n)
+    
+    # if len(num)==1:
+    #     return 0
+
+    # else:
+    #     global counter
+    #     counter+=1
+    #     ln = []
+    #     for i in range(len(num)):
+    #         ln.append(int(num[i]))
+        
+    #     return persistence(int(np.prod(ln))) if int(np.prod(ln)) >= 10 else counter
+        
+    
+
+# def test(test_n):
+#     num = str(test_n)
+#     ln = []
+#     for i in range(len(num)):
+#         ln.append(int(num[i]))
+#     # lb = int(np.prod(ln))
+#     return test(int(np.prod(ln)))
+    
+    # if len(num) == 1:
+    #     # if int(num) == n:
+    #     #     return 0
+    #     # else:
+    #     #   return int(num)  
+    #     # if len(num) == 1 and num.isdigit() and num > '0':
+    #     #     return 0
+    #     # else:
+    #     #     return int(num)
+    #     return int(num)
+    # else:
+    #     ln = []
+    #     for i in range(len(num)):
+    #         ln.append(int(num[i]))
+    #     return persistence(int(np.prod(ln)))
+
+    #v5
+    # num = str(n)
+    
+    # if len(num) == 1:
+    #     # if int(num) == n:
+    #     #     return 0
+    #     # else:
+    #     #   return int(num)  
+    #     # if len(num) == 1 and num.isdigit() and num > '0':
+    #     #     return 0
+    #     # else:
+    #     #     return int(num)
+    #     return int(num)
+    # else:
+    #     ln = []
+    #     for i in range(len(num)):
+    #         ln.append(int(num[i]))
+    #     return persistence(int(np.prod(ln)))
     
     #v4
     # num = str(n)
