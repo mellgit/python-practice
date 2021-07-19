@@ -1,13 +1,15 @@
 """
 
 """
+import math
 
 def main():
     
     # ex_3()
     # ex_5()
     # ex_6()
-    ex_9()
+    # ex_9()
+    ex_10()
 
 def ex_3():
     w = float(input('w(m) = '))
@@ -28,6 +30,22 @@ def ex_9():
     for i in range(3):
         first_installment+=first_installment*4/100
         print(round(first_installment, 2))
+
+
+# moscow 55.7558° N, 37.6173° E
+# podolsk 55.42474549506035, 37.550110684896815
+def ex_10():
+
+    t1 = 55.7558
+    g1 = 37.6173
+
+    t2 = 55.4247
+    g2 = 37.5501
+    distance = 6371.01 * math.acos(math.sin(t1)*math.sin(t2)+math.cos(t1)*math.cos(t2)*math.cos(g1-g2))
+    print(f"{round(distance/100*1.61, 2)} km")
+    
+
+
 
 if __name__=='__main__':
     main()
