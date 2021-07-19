@@ -9,7 +9,10 @@ def main():
     # ex_5()
     # ex_6()
     # ex_9()
-    ex_10()
+    # ex_10()
+    # ex_16()
+    # ex_19()
+    ex_33()
 
 def ex_3():
     w = float(input('w(m) = '))
@@ -35,15 +38,31 @@ def ex_9():
 # moscow 55.7558° N, 37.6173° E
 # podolsk 55.42474549506035, 37.550110684896815
 def ex_10():
-
+    # moscow 
     t1 = 55.7558
     g1 = 37.6173
-
+    # podolsk
     t2 = 55.4247
     g2 = 37.5501
     distance = 6371.01 * math.acos(math.sin(t1)*math.sin(t2)+math.cos(t1)*math.cos(t2)*math.cos(g1-g2))
     print(f"{round(distance/100*1.61, 2)} km")
     
+
+def ex_16():
+    radius = int(input("> "))
+    print(f"area = {math.pi*radius**2}")
+    print(f"volume = {4/3*(math.pi*radius**3)}")
+
+def ex_19():
+    d = int(input('> '))
+    v1 = 0
+    a = 9.8
+    print(f"v2 = {pow(v1**2+2*a*d, 1/2)}")
+
+def ex_33():
+    val = int(input('> '))
+    ln = [int(i) for i in str(val)]
+    print(sum(ln))
 
 
 
