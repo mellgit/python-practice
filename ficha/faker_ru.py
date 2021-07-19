@@ -1,3 +1,4 @@
+# создание пслевдо личности
 from faker import Faker
 
 
