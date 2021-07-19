@@ -1,4 +1,5 @@
 # создание пслевдо личности
+# https://faker.readthedocs.io/en/master/
 from faker import Faker
 
 
